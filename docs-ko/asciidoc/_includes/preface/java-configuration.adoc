@@ -2,18 +2,18 @@
 [[jc]]
 == Java Configuration
 
-General support for http://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/beans.html#beans-java[Java Configuration] was added to Spring Framework in Spring 3.1.
-Since Spring Security 3.2 there has been Spring Security Java Configuration support which enables users to easily configure Spring Security without the use of any XML.
+http://docs.spring.io/spring/docs/3.1.x/spring-framework-reference/html/beans.html#beans-java[Java Configuration] 에 대한 지원은 Spring Framework 3.1에서 추가 되었다.
+Spring Security 는 사용자들이 XML을 사용하지 않아도 쉽게 Spring Security 설정을 할 수 있도록 3.2버전부터 지원해왔다.
 
-If you are familiar with the <<ns-config>> then you should find quite a few similarities between it and the Security Java Configuration support.
+만약 <<ns-config>> 에 나오는 내용에 익숙하다면 Security Java Configuration이 그것과 많이 유사하다는 것을 알수 있을 것이다.
 
-NOTE: Spring Security provides https://github.com/spring-projects/spring-security/tree/master/samples/javaconfig[lots of sample applications] which demonstrate the use of Spring Security Java Configuration.
+NOTE: Spring Security 는 Spring Security Java Configuration 을 사용한 https://github.com/spring-projects/spring-security/tree/master/samples/javaconfig[많은 예제]를 제공하고 있다.
 
 === Hello Web Security Java Configuration
 
-The first step is to create our Spring Security Java Configuration.
-The configuration creates a Servlet Filter known as the `springSecurityFilterChain` which is responsible for all the security (protecting the application URLs, validating submitted username and passwords, redirecting to the log in form, etc) within your application.
-You can find the most basic example of a Spring Security Java Configuration below:
+첫 번째 할일은 Spring Seucrity Java Configuration 을 만드는 것이다. 
+이 설정은 애플리케이션에 있는 모든 보안(protecting the application URLs, validating submitted username and passwords, redirecting to the log in form, etc)을 책임지는 `springSecurityFilterChain` 과 같은 ServletFilter를 만든다.
+Spring Security Java Configration 에 대한 기본적인 예제는 아래에서 찾아볼 수 있다. 
 
 [[jc-hello-wsca]]
 [source,java]
@@ -36,8 +36,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 }
 ----
 
-There really isn't much to this configuration, but it does a lot.
-You can find a summary of the features below:
+이 설정은 양은 많지 않지만 많은 것을 합니다.
+아래에서 기능에 대한 요약을 찾아볼 수 있습니다:
 
 * Require authentication to every URL in your application
 * Generate a login form for you
@@ -61,9 +61,10 @@ You can find a summary of the features below:
 ==== AbstractSecurityWebApplicationInitializer
 
 The next step is to register the `springSecurityFilterChain` with the war.
-This can be done in Java Configuration with http://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/mvc.html#mvc-container-config[Spring's WebApplicationInitializer support] in a Servlet 3.0+ environment.
-Not suprisingly, Spring Security provides a base class `AbstractSecurityWebApplicationInitializer` that will ensure the `springSecurityFilterChain` gets registered for you.
-The way in which we use `AbstractSecurityWebApplicationInitializer` differs depending on if we are already using Spring or if Spring Security is the only Spring component in our application.
+다음 스텝은 `springSecurityFilterChain` 을 war 로 등록하는 것입니다.
+이것은 Servlet 3.0이상 환경에서 지원 하는  http://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/mvc.html#mvc-container-config[Spring's WebApplicationInitializer support] 에 있는 Java Configuration 를 사용해서 할 수 있습니다. 
+놀랍지 않게 Spring Security 는 `springSecurityFilterChain` 이 등록된 것을 알려주는 기본 클래스인 `AbstractSecurityWebApplicationInitializer` 를 제공합니다. 
+`AbstractSecurityWebApplicationInitializer` 를 사용하는 방법은 이미 Spring을 사용중인지 또는 Spring Security가 애플리케이션의 유일한 Spring 컴포넌트인지에 따라서 다릅니다. 
 
 * <<abstractsecuritywebapplicationinitializer-without-existing-spring>> - Use these instructions if you are not using Spring already
 * <<abstractsecuritywebapplicationinitializer-with-spring-mvc>> - Use these instructions if you are already using Spring
