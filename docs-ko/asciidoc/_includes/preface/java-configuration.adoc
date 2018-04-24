@@ -66,13 +66,13 @@ The next step is to register the `springSecurityFilterChain` with the war.
 놀랍지 않게 Spring Security 는 `springSecurityFilterChain` 이 등록된 것을 알려주는 기본 클래스인 `AbstractSecurityWebApplicationInitializer` 를 제공합니다. 
 `AbstractSecurityWebApplicationInitializer` 를 사용하는 방법은 이미 Spring을 사용중인지 또는 Spring Security가 애플리케이션의 유일한 Spring 컴포넌트인지에 따라서 다릅니다. 
 
-* <<abstractsecuritywebapplicationinitializer-without-existing-spring>> - Use these instructions if you are not using Spring already
-* <<abstractsecuritywebapplicationinitializer-with-spring-mvc>> - Use these instructions if you are already using Spring
+* <<abstractsecuritywebapplicationinitializer-without-existing-spring>> - Spring 을 사용하고 있지 않다면 이것을 사용하세요.
+* <<abstractsecuritywebapplicationinitializer-with-spring-mvc>> - Spring 을 사용하고 있다면 이것을 사용하세요.
 
 ==== AbstractSecurityWebApplicationInitializer without Existing Spring
 
-If you are not using Spring or Spring MVC, you will need to pass in the `WebSecurityConfig` into the superclass to ensure the configuration is picked up.
-You can find an example below:
+만약 Spring 이나 SpringMVC 를 사용하고 있지 않다면 그 설정이 적용된 것을 보장하기 위해 `WebSecurityConfig` 를 superclass 에 전달 하는 것이 필요합니다.
+아래에 예제를 찾을수 있습니다.
 
 [source,java]
 ----
@@ -87,17 +87,17 @@ public class SecurityWebApplicationInitializer
 }
 ----
 
-The `SecurityWebApplicationInitializer` will do the following things:
+`SecurityWebApplicationInitializer` 은 다음과 같은 동작을 수행합니다.
 
-* Automatically register the springSecurityFilterChain Filter for every URL in your application
-* Add a ContextLoaderListener that loads the <<jc-hello-wsca,WebSecurityConfig>>.
+* 애플리케이션에 있는 모든 URL 들을 springSecurityFilterChainFilter에 등록합니다. 
+* <<jc-hello-wsca,WebSecurityConfig>> 를 로드하는 ContextLoaderListener 를 추가 합니다. 
 
 ==== AbstractSecurityWebApplicationInitializer with Spring MVC
 
-If we were using Spring elsewhere in our application we probably already had a `WebApplicationInitializer` that is loading our Spring Configuration.
-If we use the previous configuration we would get an error.
-Instead, we should register Spring Security with the existing `ApplicationContext`.
-For example, if we were using Spring MVC our `SecurityWebApplicationInitializer` would look something like the following:
+애플리케이션 어딘가에서 Spring 을 사용하고 있다면 Spring Configuration 을 로딩하는 `WebApplicationInitializer` 를 이미 가지고 있을것입니다.
+만약 앞에 본 설정을 사용한다면 에러가 날것입니다. 
+대신 `ApplicationContext` 에 Spring Security 를 등록해줘야 합니다. 
+예를 들어 Spring MVC의 `SecurityWebApplicaitonInitailizer` 를 사용한다면 다음과 같이 보일 것입니다.
 
 [source,java]
 ----
@@ -110,8 +110,9 @@ public class SecurityWebApplicationInitializer
 ----
 
 This would simply only register the springSecurityFilterChain Filter for every URL in your application.
-After that we would ensure that `WebSecurityConfig` was loaded in our existing ApplicationInitializer.
-For example, if we were using Spring MVC it would be added in the `getRootConfigClasses()`
+이 코드는 단순히 애플리케이션에 있는 모든 URL 을 springSecurityFilterChainFilter 에 등록합니다.
+그런 다음 ApplicationInitializer 에 `WebSecurityConfig` 가 로드 되었는지 확인합니다. 
+예를 들어 Spring MVC 를 사용하고 있다면 `getRootConfigClasses()` 에 추가 될 것입니다.
 
 [[message-web-application-inititializer-java]]
 [source,java]
