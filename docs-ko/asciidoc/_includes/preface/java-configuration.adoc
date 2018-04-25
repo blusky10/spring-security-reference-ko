@@ -132,8 +132,10 @@ public class MvcWebApplicationInitializer extends
 [[jc-httpsecurity]]
 === HttpSecurity
 
-Thus far our <<jc-hello-wsca,WebSecurityConfig>> only contains information about how to authenticate our users.
-How does Spring Security know that we want to require all users to be authenticated? How does Spring Security know we want to support form based authentication? The reason for this is that the `WebSecurityConfigurerAdapter` provides a default configuration in the `configure(HttpSecurity http)` method that looks like:
+지금까지 <<jc-hello-wsca,WebSecurityConfig>> 는 사용자를 어떻게 인증하는지에 대한 정보만 담고 있었습니다. 
+How does Spring Security know we want to support form based authentication? The reason for this is that the `WebSecurityConfigurerAdapter` provides a default configuration in the `configure(HttpSecurity http)` method that looks like:
+Spring Security 모든 사용자에 대해서 인증을 요구한다는 것을 어떻게 알고 있을까요? Spring Security는 우리가 제공하는 폼 기반 인증을 어떻게 알고 있을까요? 
+그 이유는 `WebSecurityConfigurerAdapter` 가 제공하는 아래와 같은 `configure(HttpSecurity http)` 메소드에 있는 기본 설정 때문입니다.
 
 [source,java]
 ----
@@ -148,13 +150,13 @@ protected void configure(HttpSecurity http) throws Exception {
 }
 ----
 
-The default configuration above:
+위에 보이는 기본 설정은 다음과 같습니다. 
 
-* Ensures that any request to our application requires the user to be authenticated
-* Allows users to authenticate with form based login
-* Allows users to authenticate with HTTP Basic authentication
+* 어플리케이션으로 요청되는 모든 request는 사용자에 대해서 인증을 받아야 한다. 
+* 사용자는 폼 을 기반으로한 login 을 이용해서 인증을 받을 수 있다. 
+* 사용자는 HTTP 기본 인증으로 인증을 받을 수 있다. 
 
-You will notice that this configuration is quite similar the XML Namespace configuration:
+이 설정은 XML Namespace 설정과 매우 비슷합니다. 
 
 [source,xml]
 ----
@@ -165,18 +167,18 @@ You will notice that this configuration is quite similar the XML Namespace confi
 </http>
 ----
 
-The Java Configuration equivalent of closing an XML tag is expressed using the `and()` method which allows us to continue configuring the parent.
-If you read the code it also makes sense.
-I want to configure authorized requests __and__ configure form login __and__ configure HTTP Basic authentication.
+XML 의 닫는 태그와 동일한 형태의 Java Configuration 은 `and()` 메소드를 사용해서 표현 되며, 이 메소드는 상위 설정을 계속 할수 있도록 해줍니다.
+코드를 읽어보면 그 자체가 의미가 통하게 됩니다.
+나는 인증된 요청을 설정하고 싶습니다. 그리고 폼 로그인을 설정하고, HTTP 기본 인증을 설정하고 싶습니다.
 
 [[jc-form]]
 === Java Configuration and Form Login
-You might be wondering where the login form came from when you were prompted to log in, since we made no mention of any HTML files or JSPs.
-Since Spring Security's default configuration does not explicitly set a URL for the login page, Spring Security generates one automatically, based on the features that are enabled and using standard values for the URL which processes the submitted login, the default target URL the user will be sent to after logging in and so on.
+HTML 이나 JSP 파일에 대한 언급이 없었기 때문에 로그인 하라는 메시지가 표시되었을 때 로그인 폼이 어떻게 만들어졌는지 의문이 들었을 것입니다.
+Spring Security 의 기본 설정은 로그인 페이지의 URL 을 명시적으로 설정하지 않습니다. 
+따라서 Spring Security 는 활성화된 기능들과 로그인 서브밋을 할수 있는 URL에 대한 표준 값들, 로그인 후 사용자가 전송할 기본 대상 URL등을 기반으로 자동으로 로그인 페이지를 생성합니다.
 
-While the automatically generated log in page is convenient to get up and running quickly, most applications will want to provide their own log in page.
-To do so we can update our configuration as seen below:
-
+자동으로 만들어진 로그인 페이지는 빠르게 시작하고 실행하기 편하지만 대부분의 어플리케이션들은 그들만의 로그인 페이지를 제공하기를 원할 것입니다.
+그걸 위해서 아래와 같이 설정을 수정할 수 있습니다. 
 
 [source,java]
 ----
