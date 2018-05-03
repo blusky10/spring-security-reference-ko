@@ -339,24 +339,23 @@ fluent API는 직접 `LogoutHandler` 를 구현하는 대신 각각의 `LogoutHa
 [[jc-logout-success-handler]]
 ==== LogoutSuccessHandler
 
-The `LogoutSuccessHandler` is called after a successful logout by the `LogoutFilter`, to handle e.g.
-redirection or forwarding to the appropriate destination.
-Note that the interface is almost the same as the `LogoutHandler` but may raise an exception.
+`LogoutSuccessHandler` 는 성공적으로 로그아웃이 된 이후에 적당한 대상으로 포워딩이나 리다이렉션 하기 위해서  `LogoutFilter` 에 의해서 호출됩니다. 
+`LogoutHandler` 는 인터페이스와 거의 같지만 예외가 발생할 수 있습니다.
 
-The following implementations are provided:
+다음과 같은 구현체들이 제공 됩니다. 
 
 - {security-api-url}org/springframework/security/web/authentication/logout/SimpleUrlLogoutSuccessHandler.html[SimpleUrlLogoutSuccessHandler]
 - HttpStatusReturningLogoutSuccessHandler
 
-As mentioned above, you don't need to specify the `SimpleUrlLogoutSuccessHandler` directly.
-Instead, the fluent API provides a shortcut by setting the `logoutSuccessUrl()`.
-This will setup the `SimpleUrlLogoutSuccessHandler` under the covers.
-The provided URL will be redirected to after a logout has occurred.
-The default is `/login?logout`.
+위에서 언급한 바와 같이 직접 `SimpleUrlLogoutSuccessHandler` 를 지정할 필요는 없습니다. 
+대신 fluent API 에서 `logoutSuccessUrl()` 로 설정할 수 있는 숏컷을 제공합니다. 
+이렇게 하면 `SimpleUrlLogoutSuccessHandler` 가 설정됩니다. 
+로그아웃 이후에 제공되는 URL 로 리다이렉션 됩니다. 
+기본 URL 은 `/login?logout` 입니다. 
 
-The `HttpStatusReturningLogoutSuccessHandler` can be interesting in REST API type scenarios.
-Instead of redirecting to a URL upon the successful logout, this `LogoutSuccessHandler` allows you to provide a plain HTTP status code to be returned.
-If not configured a status code 200 will be returned by default.
+`HttpStatusReturningLogoutSuccessHandler` 는 REST API 타입의 시나리오에서 유용할 수 있습니다. 
+`LogoutSuccessHandler` 는 성공적으로 로그아웃 된 이후에 URL 로 리다이렉션 하는 대신, 일반적인 HTTP 상태 코드를 제공 할 수 있습니다. 
+만약 설정이 없다면 상태코드 200이 기본적으로 리턴 됩니다. 
 
 [[jc-logout-references]]
 ==== Further Logout-Related References
