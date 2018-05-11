@@ -371,8 +371,8 @@ fluent API는 직접 `LogoutHandler` 를 구현하는 대신 각각의 `LogoutHa
 [[jc-webflux]]
 === WebFlux Security
 
-Spring Security's WebFlux support relies on a `WebFilter` and works the same for Spring WebFlux and Spring WebFlux.Fn.
-You can find a few sample applications that demonstrate the code below:
+Spring Security에서 지원하는 WebFlux 는 `WebFilter` 에 의존을 하며 Spring WebFlux 와 Spring WebFlux.Fn 에서도 동일하게 동작합니다. 
+코드를 시연한 몇가지 샘플 어플리케이션들은 아래에서 찾아볼 수 있습니다.
 
 * Hello WebFlux {gh-samples-url}/javaconfig/hellowebflux[hellowebflux]
 * Hello WebFlux.Fn {gh-samples-url}/javaconfig/hellowebfluxfn[hellowebfluxfn]
@@ -381,7 +381,7 @@ You can find a few sample applications that demonstrate the code below:
 
 ==== Minimal WebFlux Security Configuration
 
-You can find a minimal WebFlux Security configuration below:
+최소한의 WebFlux Security 설정은 아래에서 찾아볼 수 있습니다.
 
 [source,java]
 -----
@@ -400,11 +400,11 @@ public class HelloWebfluxSecurityConfig {
 }
 -----
 
-This configuration provides form and http basic authentication, sets up authorization to require an authenticated user for accessing any page, sets up a default log in page and a default log out page, sets up security related HTTP headers, CSRF protection, and more.
+이 설정은 폼 과 http 기본 인증을 제공합니다. 그리고 인증된 사용자에게 페이지 엑세스를 요구하는 권한을 설정하고 기본 로그인, 로그아웃 페이지를 설정합하고 보안 관련 HTTP 헤더, CSRF 보호 등을 설정합니다. 
 
 ==== Explicit WebFlux Security Configuration
 
-You can find an explicit version of the minimal WebFlux Security configuration below:
+최소한의 WebFlux Security 설정의 명시적인 버전은 아래에서 찾아볼 수 있습니다.
 
 [source,java]
 -----
@@ -434,8 +434,7 @@ public class HelloWebfluxSecurityConfig {
 }
 -----
 
-This configuration explicitly sets up all the same things as our minimal configuration.
-From here you can easily make the changes to the defaults.
+이 설정은 최소한의 설정과 동일하게 모든 것을 명시적으로 설정합니다. 여기에서 기본 값들을 쉽게 변경할 수 있습니다.
 
 [[jc-oauth2login]]
 === OAuth 2.0 Login
