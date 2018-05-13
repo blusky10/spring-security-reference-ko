@@ -439,18 +439,17 @@ public class HelloWebfluxSecurityConfig {
 [[jc-oauth2login]]
 === OAuth 2.0 Login
 
-The OAuth 2.0 Login feature provides an application with the capability to have users log in to the application by using their existing account at an OAuth 2.0 Provider (e.g.
-GitHub) or OpenID Connect 1.0 Provider (such as Google).
-OAuth 2.0 Login implements the use cases: "Login with Google" or "Login with GitHub".
+Oauth 2.0 Login Oauth 2.0 공급자(예: GitHub)나 OpenID Connect 1.0 공급자(구글) 의 사용자가 기존 계정을 사용해서 어플리케이션을 로그인 할 수 있는 기능을 제공합니다.
+Auth 2.0 Login 은 "Login with Google" 또는 "Login with GitHub" 사용 사례에서 구현합니다. 
 
-NOTE: OAuth 2.0 Login is implemented by using the *Authorization Code Grant*, as specified in the https://tools.ietf.org/html/rfc6749#section-4.1[OAuth 2.0 Authorization Framework] and http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Core 1.0].
+NOTE: Oauth 2.0 Login 은 https://tools.ietf.org/html/rfc6749#section-4.1[OAuth 2.0 Authorization Framework] 와 http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Core 1.0] 에서 지정한대로 *Authorization Code Grant* 를 사용해서 구현 됩니다. 
 
 [[jc-oauth2login-sample-boot]]
 ==== Spring Boot 2.0 Sample
 
-Spring Boot 2.0 brings full auto-configuration capabilities for OAuth 2.0 Login.
+Spring Boot 2.0 은 Oauth 2.0 Login 을 위한 완벽한 자동 설정을 제공합니다.
 
-This section shows how to configure the {gh-samples-url}/boot/oauth2login[*OAuth 2.0 Login sample*] using _Google_ as the _Authentication Provider_ and covers the following topics:
+이번 섹션에서는 _Google_ 을  _Authentication Provider_ 로 사용해서 {gh-samples-url}/boot/oauth2login[*OAuth 2.0 Login sample*] 을 설정하는 방법을 보여주며 다음과 같은 주제를 다룹니다. 
 
 * <<jc-oauth2login-sample-initial-setup,Initial setup>>
 * <<jc-oauth2login-sample-redirect-uri,Setting the redirect URI>>
